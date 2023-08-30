@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <div style="text-align: center;">
+      <h1>Cantidad de estudiantes segun semestre</h1>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="semestre">
+        <th mat-header-cell *matHeaderCellDef> Semestres </th>
+        <td mat-cell *matCellDef="let element"> {{ element.semestree }} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="count">
+        <th mat-header-cell *matHeaderCellDef> Cantidad de estudiantes</th>
+        <td mat-cell *matCellDef="let element"> {{ element.countestudiante}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</body>
+
+</html>
+

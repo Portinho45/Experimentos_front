@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <div style="text-align: center;">
+      <h1>Muestra cantidad de usuarios por rol</h1>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="contusuario">
+        <th mat-header-cell *matHeaderCellDef> Cantidad de Usuarios </th>
+        <td mat-cell *matCellDef="let element"> {{ element.countusuarios }} </td>
+      </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="rol">
+        <th mat-header-cell *matHeaderCellDef> Rol</th>
+        <td mat-cell *matCellDef="let element"> {{ element.rol }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</body>
+
+</html>
+

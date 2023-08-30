@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <div style="text-align: center;">
+      <h1>Cantidad de match de los reclutadores</h1>
+    </div>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Name Column -->
+      <ng-container matColumnDef="reclutadorm">
+        <th mat-header-cell *matHeaderCellDef> Reclutador</th>
+        <td mat-cell *matCellDef="let element"> {{ element.reclutadorm }} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="countestudiantesmatch">
+        <th mat-header-cell *matHeaderCellDef> Numero de match </th>
+        <td mat-cell *matCellDef="let element"> {{ element.countestudiantesmatch }} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</body>
+
+</html>
+

@@ -1,0 +1,42 @@
+<div class="wrapper">
+  <div class="body">
+    <img class="logo" src="../../../assets/Imagenes/icono.png" alt="Login" />
+    <br />
+    <h1>Iniciar Sesión</h1>
+
+    <div class="form-field-container">
+      <mat-form-field class="example-full-width">
+        <mat-label>Usuario</mat-label>
+        <input matInput placeholder="Usuario" [(ngModel)]="username" />
+      </mat-form-field>
+    </div>
+
+    <div class="form-field-container">
+      <mat-form-field class="example-full-width">
+        <mat-label>Contraseña</mat-label>
+        <input matInput placeholder="Contraseña" [(ngModel)]="password" [type]="showPassword ? 'text' : 'password'" />
+        <button mat-icon-button matSuffix (click)="togglePassword()">
+          <mat-icon>{{ showPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+
+    <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-primary btn-lg" (click)="login()">
+        Ingresar
+      </button>
+    </div>
+
+    <p class="mt-3">
+      No tienes cuenta?
+      <a routerLink="/registrar-usuario" style="color: #ff1e57"><strong>Registrar</strong></a>
+    </p>
+
+    <p class="mt-3">
+      <a routerLink="/" style="color: #ff1e57; text-decoration: none"
+        ><strong>Volver</strong></a
+      >
+      al Home
+    </p>
+  </div>
+</div>

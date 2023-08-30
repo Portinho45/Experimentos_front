@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <div style="text-align: center;">
+
+      <h1>Registro de Estudiantes</h1>
+    </div>
+  <form [formGroup]="form" (submit)="aceptar()">
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Id</mat-label>
+      <input matInput placeholder="Id" formControlName="idEstudiante">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Semestre</mat-label>
+      <input matInput required placeholder="Semestre" formControlName="Semestre_Estudiante">
+    </mat-form-field>
+    <br>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Edad</mat-label>
+      <input matInput required placeholder="Edad" formControlName="Edad_Estudiante">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Genero</mat-label>
+      <input matInput required placeholder="Genero" formControlName="Genero_Estudiante">
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Practicante</mat-label>
+      <mat-select name="Practicante" formControlName="Practicante_Estudiante">
+        <mat-option value=true>Si</mat-option>
+        <mat-option value=false>No</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <br>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Descripcion</mat-label>
+      <input matInput required placeholder="Descripcion" formControlName="Descripcion_Estudiante">
+    </mat-form-field>
+
+    <br>
+    <mat-form-field appearance="fill">
+      <mat-label>Institucion</mat-label>
+      <mat-select formControlName="Institucion_Estudiante" [(value)]="idInstitucionSeleccionado" required>
+        <mat-option *ngFor="let i of listai" [value]="i.id">
+          {{i.nombre_Institucion}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>Usuario</mat-label>
+      <input matInput required placeholder="Usuario" formControlName="Usuario_Estudiante">
+    </mat-form-field>
+    <div>
+      <button mat-raised-button class="color1">Aceptar</button>
+      <button mat-raised-button class="color2" routerLink="/login">Cancelar</button>
+      <br>
+    </div>
+    <p>{{mensaje}}</p>
+    </form>
+  </div>
+</body>
+</html>
+
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div style="text-align: center;">
+
+      <h1>Registro de Calificacion_Estudiante</h1>
+    </div>
+    <form [formGroup]="form" (submit)="aceptar()">
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Id:</mat-label>
+        <input matInput required placeholder="Id" formControlName="id">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Estudiante</mat-label>
+        <mat-select formControlName="Estudiante_Nombre" [(value)]="idEstudianteSeleccionado" required>
+          <mat-option *ngFor="let e of listae" [value]="e.idEstudiante">
+            {{e.usuario_Estudiante.nombre_Usuario}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Id_Calificacion</mat-label>
+        <mat-select formControlName="Estudiante_Calificacion" [(value)]="idCalificacionSeleccionado" required>
+          <mat-option *ngFor="let c of listac" [value]="c.id">
+            {{c.id}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <div style="text-align: center;">
+
+      <button mat-raised-button class="color1">Aceptar</button>
+      <button mat-raised-button class="color2" routerLink="/pages/Calificacion_Estudiante">Cancelar</button>
+      <br>
+      </div>
+      <p>{{mensaje}}</p>
+    </form>
+  </div>
+</body>
+</html>
+

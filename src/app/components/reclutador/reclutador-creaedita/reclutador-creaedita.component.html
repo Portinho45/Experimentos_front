@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div style="text-align: center;">
+
+      <h1>Registro de Reclutadores</h1>
+    </div>
+    <form [formGroup]="form" (submit)="aceptar()">
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Id:</mat-label>
+        <input matInput required placeholder="Id" formControlName="id">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Descripcion:</mat-label>
+        <input matInput required placeholder="Descripcion" formControlName="descripcion_Reclutador">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Empresa_id:</mat-label>
+        <mat-select formControlName="empresaId" [(value)]="idEmpresaSeleccionado" required>
+          <mat-option *ngFor="let e of listae" [value]="e.id">
+            {{e.nombre_Empresa}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Usuario:</mat-label>
+        <input matInput required placeholder="Ingrese id usuario" formControlName="usuarioId">
+      </mat-form-field>
+      <br>
+      <div style="text-align: center;">
+
+      <button mat-raised-button class="color1">Aceptar</button>
+      <button mat-raised-button class="color2" routerLink="/login">Cancelar</button>
+      <br>
+      </div>
+      <p>{{mensaje}}</p>
+    </form>
+  </div>
+</body>
+</html>

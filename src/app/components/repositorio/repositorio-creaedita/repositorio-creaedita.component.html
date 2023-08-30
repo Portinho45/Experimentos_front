@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <div style="text-align: center;">
+
+      <h1>Registro de Empresas</h1>
+    </div>
+    <form [formGroup]="form" (submit)="aceptar()">
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Id:</mat-label>
+        <input matInput required placeholder="Id" formControlName="id">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Nombre:</mat-label>
+        <input matInput required placeholder="Nombre" formControlName="nombreRepositorio">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Descripcion:</mat-label>
+        <input matInput required placeholder="Descripcion" formControlName="descripcionRepositorio">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Enlace:</mat-label>
+        <input matInput required placeholder="Enlace" formControlName="enlaceRepositorio">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha de Repositorio:</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="fechaRepositorio" [max]="maxFecha">
+        <mat-hint>DD/MM/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Descripcion:</mat-label>
+        <input matInput required placeholder="EstudianteId" formControlName="estudiante">
+      </mat-form-field>
+      <br>
+      <div style="text-align: center;">
+
+      <button mat-raised-button class="color1">Aceptar</button>
+      <button mat-raised-button class="color2" routerLink="/pages/Empresa">Cancelar</button>
+      <br>
+      </div>
+      <p>{{mensaje}}</p>
+    </form>
+  </div>
+</body>
+</html>

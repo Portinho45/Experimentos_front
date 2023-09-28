@@ -75,7 +75,7 @@ const routes: Routes = [
   {
     path:'carreras',component:CarreraComponent, children:[
 
-    { path:'nuevo/', component:CarreraCreaeditaComponent },
+    { path:'nuevo', component:CarreraCreaeditaComponent },
 
     {path:'edicion/:id', component:CarreraCreaeditaComponent}
   ],canActivate:[GuardService]

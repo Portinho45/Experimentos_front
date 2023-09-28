@@ -69,7 +69,12 @@ export class ReclutadorCreaeditaComponent implements OnInit {
     let u = new Usuario();
     this.es.ListId(this.idEmpresaSeleccionado).subscribe((data) => {
       this.reclutador.empresa = data;
+    });
 
+    this.uS.listUsername(this.username).subscribe((data) => {
+      u = data;
+      this.reclutador.usuario = u;
+    });
 
     if (1 > 0) {
 
@@ -82,23 +87,16 @@ export class ReclutadorCreaeditaComponent implements OnInit {
         })
         this.router.navigate(['pages/Reclutadores']);
       } else {
-        this.uS.listUsername(this.username).subscribe((data) => {
-          u = data;
-          this.reclutador.usuario = u;
-          console.log(this.reclutador.usuario);
           this.reclutadorService.Insert(this.reclutador).subscribe((data) => {
             this.reclutadorService.List().subscribe((data) => {
               this.reclutadorService.SetList(data);
             });
           });
-        });
       }
-
       this.router.navigate(['pages/Reclutadores']);
     } else {
       this.mensaje = 'Complete todos los campos!';
     }
-    });
   }
 
   init() {

@@ -69,6 +69,7 @@ export class RepositorioCreaeditaComponent implements OnInit {
     this.eS.listId(this.idEstudiante).subscribe((data) => {
       e = data;
       this.repositorio.estudiante = e;
+    });
     if (this.form.value['nombreRepositorio'].length > 0) {
       if (this.edicion) {
         //actualice
@@ -89,7 +90,6 @@ export class RepositorioCreaeditaComponent implements OnInit {
     } else {
       this.mensaje = 'Complete todos los campos!';
     }
-  });
   }
 
 

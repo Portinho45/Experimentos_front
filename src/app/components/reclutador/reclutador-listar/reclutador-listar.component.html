@@ -43,8 +43,8 @@
       </ng-container>
 
       <ng-container matColumnDef="accion01">
-        <th mat-header-cell [hidden]="role=='ESTUDIANTE' || role=='RECLUTADOR'" *matHeaderCellDef> Actualizar  </th>
-        <td mat-cell [hidden]="role=='ESTUDIANTE' || role=='RECLUTADOR'" *matCellDef="let element">
+        <th mat-header-cell [hidden]="role=='ESTUDIANTE'" *matHeaderCellDef> Actualizar  </th>
+        <td mat-cell [hidden]="role=='ESTUDIANTE'" *matCellDef="let element">
           <button mat-raised-button class="color3" [routerLink]="['Edicion',element.id]"><span class="material-icons">autorenew</span></button>
         </td>
       </ng-container>

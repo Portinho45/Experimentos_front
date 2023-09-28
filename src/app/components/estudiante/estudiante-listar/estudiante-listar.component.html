@@ -59,14 +59,15 @@
         <td mat-cell *matCellDef="let element"> {{element.institucion_Estudiante.nombre_Institucion}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="usuario">
-        <th mat-header-cell *matHeaderCellDef> Usuario </th>
-        <td mat-cell *matCellDef="let element"> {{element.usuario_Estudiante.username}} </td>
+      <ng-container matColumnDef="carrera">
+        <th mat-header-cell *matHeaderCellDef> Carrera </th>
+        <td mat-cell *matCellDef="let element"> {{element.carrera_Estudiante.nombre_Carrera}} </td>
       </ng-container>
 
+
       <ng-container matColumnDef="accion01">
-        <th mat-header-cell [hidden]="role=='ESTUDIANTE' || role=='RECLUTADOR'" *matHeaderCellDef> Actualizar </th>
-        <td mat-cell [hidden]="role=='ESTUDIANTE' || role=='RECLUTADOR'" *matCellDef="let element">
+        <th mat-header-cell [hidden]="role=='RECLUTADOR'" *matHeaderCellDef> Actualizar </th>
+        <td mat-cell [hidden]="role=='RECLUTADOR'" *matCellDef="let element">
           <button mat-raised-button class="color3" [routerLink]="['edicion',element.idEstudiante]"><span class="material-icons">autorenew</span></button>
         </td>
       </ng-container>

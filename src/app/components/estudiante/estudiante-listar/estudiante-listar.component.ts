@@ -17,7 +17,7 @@ export class EstudianteListarComponent implements OnInit {
   lista:Estudiante[]=[]
   dataSourceEstudiante: MatTableDataSource<Estudiante> =new MatTableDataSource();
   idMayor: number = 0;
-  displayedColumns: string[]=['id','semestre','edad','genero','practicante','descripcion','institucion','usuario','accion01','accion02']
+  displayedColumns: string[]=['id','semestre','edad','genero','practicante','descripcion','institucion', 'carrera','accion01','accion02']
   @ViewChild(MatPaginator,{ static:true }) paginator!: MatPaginator;
   constructor(private eS: EstudianteService, private dialog: MatDialog, private ls:LoginService){
 

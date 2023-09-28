@@ -18,7 +18,7 @@ export class MatchListarComponent implements OnInit{
   role:string="";
   dataSourceMatch: MatTableDataSource<Matchs>=new MatTableDataSource();
   idMayor: number = 0
-  displayedColumnsMatch: string[] = ['id', 'numero_match','confirmacion_match','reclutador', 'estudiante', 'accion01', 'accion02']
+  displayedColumnsMatch: string[] = ['id','confirmacion_match','reclutador', 'estudiante', 'accion01', 'accion02']
   estudiantes: any = [];
   reclutadores: any = [];
   @ViewChild(MatPaginator,{ static:true }) paginator!: MatPaginator;

@@ -16,7 +16,7 @@
 
       <mat-form-field class="example-full-width">
         <mat-label>Id:</mat-label>
-        <input matInput required placeholder="Id" formControlName="id">
+        <input matInput required placeholder="Id" formControlName="id" readonly="">
       </mat-form-field>
       <br>
       <mat-form-field class="example-full-width">
@@ -42,7 +42,8 @@
       <div style="text-align: center;">
 
       <button mat-raised-button class="color1">Aceptar</button>
-      <button mat-raised-button class="color2" routerLink="/login">Cancelar</button>
+      <button [hidden]="role=='RECLUTADOR'" mat-raised-button class="color2" routerLink="/login">Cancelar</button>
+      <button mat-raised-button class="color2" routerLink="/pages/Reclutadores">Cancelar</button>
       <br>
       </div>
       <p>{{mensaje}}</p>

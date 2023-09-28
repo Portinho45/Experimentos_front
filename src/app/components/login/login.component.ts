@@ -29,10 +29,17 @@ export class LoginComponent implements OnInit {
     let request = new JwtRequest();
     request.username = this.username;
     request.password = this.password;
+
     this.loginService.login(request).subscribe(
       (data: any) => {
         sessionStorage.setItem('token', data.jwttoken);
-        this.router.navigate(['pages/Empresa']);
+        // Redirige a la nueva página
+        this.router.navigate(['pages/Empresa']).then(() => {
+          // Realiza la recarga de la página después de un retraso de 2 segundos
+          setTimeout(() => {
+            location.reload();
+          }, 0); // 2000 milisegundos = 2 segundos
+        });
       },
       (error) => {
         this.mensaje = 'El usuario o la contraseña son incorrectos';
@@ -40,4 +47,5 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
 }

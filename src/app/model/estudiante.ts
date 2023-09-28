@@ -1,5 +1,6 @@
 import { Institucion_Educativa } from "./institucion"
 import { Usuario } from "./usuario"
+import { Carrera } from "./carrera"
 
 export class Estudiante{
   idEstudiante:number =0
@@ -10,4 +11,5 @@ export class Estudiante{
   descripcion_Estudiante:string =""
   institucion_Estudiante:Institucion_Educativa= new Institucion_Educativa()
   usuario_Estudiante: Usuario= new Usuario()
+  carrera_Estudiante: Carrera = new Carrera()
 }

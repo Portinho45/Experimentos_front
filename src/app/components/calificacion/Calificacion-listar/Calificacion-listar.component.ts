@@ -17,7 +17,7 @@ export class CalificacionListarComponent implements OnInit {
   lista: Calificacion[] = []
   dataSource: MatTableDataSource<Calificacion> = new MatTableDataSource();
   idMayor: number = 0
-  displayedColumns: string[] = ['codigo', 'Estudiante', 'Calificacion','acciones1','acciones2']
+  displayedColumns: string[] = ['codigo', 'Estudiante', 'EstudianteCalificador', 'Calificacion','acciones1','acciones2']
   @ViewChild(MatPaginator,{ static:true }) paginator!: MatPaginator;
 
   constructor(private aS: CalificacionService, private dialog: MatDialog, private ls:LoginService) {

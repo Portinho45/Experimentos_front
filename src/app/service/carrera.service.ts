@@ -15,10 +15,7 @@ export class CarreraService {
 
   constructor(private http:HttpClient) { }
   list(){
-    let token = sessionStorage.getItem("token");
-    return this.http.get<Carrera[]>(this.url, {
-      headers: new HttpHeaders().set('Authorization', `Bearer ${token}`).set('Content-Type', 'application/json')
-    });
+    return this.http.get<Carrera[]>(this.url)
   }
 
   insert(carrera:Carrera){

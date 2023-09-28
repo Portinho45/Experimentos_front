@@ -37,7 +37,7 @@ export class ReclutadorService {
 
   Update(reclutador: Reclutador) {
     let token = sessionStorage.getItem("token");
-   return this.http.put(this.url, reclutador, {
+    return this.http.put(this.url, reclutador, {
     headers: new HttpHeaders().set('Authorization', `Bearer ${token}`).set('Content-Type', 'application/json')
   });
   }

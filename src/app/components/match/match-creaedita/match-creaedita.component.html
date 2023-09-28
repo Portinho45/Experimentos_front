@@ -16,19 +16,15 @@
 
       <mat-form-field class="example-full-width">
         <mat-label>Id:</mat-label>
-        <input matInput required placeholder="Id" formControlName="id">
+        <input matInput required placeholder="Id" formControlName="id" readonly="">
       </mat-form-field>
       <br>
-
-      <mat-form-field class="example-full-width">
-        <mat-label>numero_match:</mat-label>
-        <input matInput required placeholder="numero_match" formControlName="codigo_match">
-      </mat-form-field>
-      <br>
-
       <mat-form-field class="example-full-width">
         <mat-label>confirmacion_match:</mat-label>
-        <input matInput required placeholder="confirmacion_match" formControlName="confirmacion_match">
+        <mat-select name="confirmacion_match" formControlName="confirmacion_match">
+          <mat-option [value]="true">Si</mat-option>
+          <mat-option [value]="false">No</mat-option>
+        </mat-select>
       </mat-form-field>
       <br>
 

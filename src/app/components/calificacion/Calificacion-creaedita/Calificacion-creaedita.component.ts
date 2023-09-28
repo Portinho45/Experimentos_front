@@ -27,18 +27,20 @@ export class CalificacionCreaeditaComponent implements OnInit {
     })
     this.form = new FormGroup({
       id: new FormControl(),
-      idEstudiante_Calificacion: new FormControl(),
-      calificacion_Calificacion: new FormControl(),
+      id_estudiante: new FormControl(),
+      estudiante_ponecalificacion: new FormControl(),
+      calificacion: new FormControl(),
     });
   }
   aceptar(): void {
     this.Calificacion.id = this.form.value['id'];
-    this.Calificacion.idEstudiante_Calificacion = this.form.value['idEstudiante_Calificacion'];
-    this.Calificacion.calificacion_Calificacion = this.form.value['calificacion_Calificacion'];
-    if (this.form.value['idEstudiante_Calificacion'].length > 0 ||
-      this.form.value['calificacion_Calificacion'].length > 0 &&
-      this.form.value['calificacion_Calificacion'] >= 0 &&
-      this.form.value['calificacion_Calificacion'] <= 5) {
+    this.Calificacion.id_estudiante = this.form.value['id_estudiante'];
+    this.Calificacion.estudiante_ponecalificacion = this.form.value['estudiante_ponecalificacion'];
+    this.Calificacion.calificacion = this.form.value['calificacion'];
+    if (this.form.value['id_estudiante'].length > 0 ||
+      this.form.value['calificacion'].length > 0 &&
+      this.form.value['calificacion'] >= 0 &&
+      this.form.value['calificacion'] <= 5) {
 
       if (this.edicion) {
         this.aS.update(this.Calificacion).subscribe((data) => {
@@ -64,8 +66,9 @@ export class CalificacionCreaeditaComponent implements OnInit {
       this.aS.listId(this.id).subscribe(data => {
         this.form = new FormGroup({
           id: new FormControl(data.id),
-          idEstudiante_Calificacion: new FormControl(data.idEstudiante_Calificacion),
-          calificacion_Calificacion: new FormControl(data.calificacion_Calificacion),
+          id_estudiante: new FormControl(data.id_estudiante),
+          estudiante_ponecalificacion: new FormControl(data.estudiante_ponecalificacion),
+          calificacion: new FormControl(data.calificacion),
         })
       })
     }

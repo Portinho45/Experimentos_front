@@ -16,7 +16,7 @@
 
       <mat-form-field class="example-full-width">
         <mat-label>Id:</mat-label>
-        <input matInput required placeholder="Id" formControlName="id">
+        <input matInput required placeholder="Id" formControlName="id" readonly="">
       </mat-form-field>
       <br>
       <mat-form-field class="example-full-width">
@@ -42,9 +42,11 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       <br>
-      <mat-form-field class="example-full-width">
-        <mat-label>Descripcion:</mat-label>
-        <input matInput required placeholder="EstudianteId" formControlName="estudiante">
+      <mat-form-field appearance="fill">
+        <mat-label>Estudiante</mat-label>
+        <mat-select formControlName="estudiante" [(value)]="idEstudiante" >
+          <mat-option  *ngFor="let estudiante of estudiantes" [value]="estudiante.idEstudiante">{{ estudiante.usuario_Estudiante.nombre_Usuario }}</mat-option>
+        </mat-select>
       </mat-form-field>
       <br>
       <div style="text-align: center;">

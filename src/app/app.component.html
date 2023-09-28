@@ -23,12 +23,9 @@
     <nav mat-tab-nav-bar ngClass = "tabs" *ngIf="open">
       <a mat-tab-link routerLink="/pages/Empresa" routerLinkActive="active-link">Empresa</a>
       <a [hidden]="role=='ESTUDIANTE' || role=='RECLUTADOR'" mat-tab-link routerLink="/pages/usuarios" routerLinkActive="active-link">Usuario</a>
-      <a [hidden]="role=='ESTUDIANTE'" mat-tab-link routerLink="/pages/requisitos" routerLinkActive="active-link">Requisito</a>
       <a mat-tab-link routerLink="/pages/Calificacion" routerLinkActive="active-link">Calificacion</a>
-      <a mat-tab-link routerLink="/pages/Calificacion_Estudiante" routerLinkActive="active-link">Calificacion_Estudiante</a>
       <a mat-tab-link routerLink="/pages/Institucion" routerLinkActive="active-link">Institucion</a>
       <a mat-tab-link routerLink="/pages/carreras" routerLinkActive="active-link">Carrera</a>
-      <a mat-tab-link routerLink="/pages/carrera_estudiante" routerLinkActive="active-link">Carrera_Estudiante</a>
       <a mat-tab-link routerLink="/pages/estudiantes" routerLinkActive="active-link">Estudiantes</a>
       <a mat-tab-link routerLink="/pages/Reclutadores" routerLinkActive="active-link">Reclutadores</a>
       <a mat-tab-link routerLink="/pages/Puesto_trabajo" routerLinkActive="active-link">Puesto_trabajo</a>
@@ -38,16 +35,16 @@
     </nav>
 
   <nav mat-tab-nav-bar ngClass = "tabs" *ngIf="open">
-    <a mat-tab-link routerLink="/pages/Reporte01" routerLinkActive="active-link">Reporte 1</a>
-    <a mat-tab-link routerLink="/pages/Reporte02" routerLinkActive="active-link">Reporte 2</a>
-    <a mat-tab-link routerLink="/pages/Reporte03" routerLinkActive="active-link">Reporte 3</a>
-    <a mat-tab-link routerLink="/pages/Reporte04" routerLinkActive="active-link">Reporte 4</a>
-    <a mat-tab-link routerLink="/pages/Reporte05" routerLinkActive="active-link">Reporte 5</a>
-    <a mat-tab-link routerLink="/pages/Reporte06" routerLinkActive="active-link">Reporte 6</a>
-    <a mat-tab-link routerLink="/pages/Reporte07" routerLinkActive="active-link">Reporte 7</a>
-    <a mat-tab-link routerLink="/pages/Reporte08" routerLinkActive="active-link">Reporte 8</a>
-    <a mat-tab-link routerLink="/pages/Reporte09" routerLinkActive="active-link">Reporte 9</a>
-    <a mat-tab-link routerLink="/pages/Reporte10" routerLinkActive="active-link">Reporte 10</a>
+    <a [hidden]="role=='ESTUDIANTE' || role=='RECLUTADOR'" mat-tab-link routerLink="/pages/Reporte01" routerLinkActive="active-link">Reporte 1</a>
+    <a [hidden]="role=='ESTUDIANTE' || role=='RECLUTADOR'" mat-tab-link routerLink="/pages/Reporte02" routerLinkActive="active-link">Reporte 2</a>
+    <a [hidden]="role=='ESTUDIANTE' || role=='RECLUTADOR'" mat-tab-link routerLink="/pages/Reporte03" routerLinkActive="active-link">Reporte 3</a>
+    <a [hidden]="role=='ESTUDIANTE' || role=='RECLUTADOR'" mat-tab-link routerLink="/pages/Reporte04" routerLinkActive="active-link">Reporte 4</a>
+    <a [hidden]="role=='ESTUDIANTE' || role=='RECLUTADOR'" mat-tab-link routerLink="/pages/Reporte05" routerLinkActive="active-link">Reporte 5</a>
+    <a [hidden]="role=='ESTUDIANTE' || role=='RECLUTADOR'" mat-tab-link routerLink="/pages/Reporte06" routerLinkActive="active-link">Reporte 6</a>
+    <a [hidden]="role=='ESTUDIANTE' || role=='RECLUTADOR'" mat-tab-link routerLink="/pages/Reporte07" routerLinkActive="active-link">Reporte 7</a>
+    <a [hidden]="role=='ESTUDIANTE' || role=='RECLUTADOR'" mat-tab-link routerLink="/pages/Reporte08" routerLinkActive="active-link">Reporte 8</a>
+    <a [hidden]="role=='ESTUDIANTE' || role=='RECLUTADOR'" mat-tab-link routerLink="/pages/Reporte09" routerLinkActive="active-link">Reporte 9</a>
+    <a [hidden]="role=='ESTUDIANTE' || role=='RECLUTADOR'" mat-tab-link routerLink="/pages/Reporte10" routerLinkActive="active-link">Reporte 10</a>
 
 
   </nav>

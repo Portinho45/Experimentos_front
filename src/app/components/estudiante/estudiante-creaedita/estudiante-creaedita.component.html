@@ -19,7 +19,7 @@
 
       <mat-form-field class="example-full-width">
         <mat-label>Id</mat-label>
-        <input matInput placeholder="Id" formControlName="idEstudiante">
+        <input matInput placeholder="Id" formControlName="idEstudiante" readonly>
       </mat-form-field>
 
       <br>
@@ -38,8 +38,12 @@
       <br>
 
       <mat-form-field class="example-full-width">
-        <mat-label>Genero</mat-label>
-        <input matInput required placeholder="Genero" formControlName="Genero_Estudiante">
+        <mat-label>Genero:</mat-label>
+        <mat-select name="Genero" formControlName="Genero_Estudiante">
+          <mat-option value=Masculino>Masculino</mat-option>
+          <mat-option value=Femenino>Femenino</mat-option>
+          <mat-option value=Otro>Otro</mat-option>
+        </mat-select>
       </mat-form-field>
 
       <br>
@@ -47,8 +51,8 @@
       <mat-form-field appearance="fill">
         <mat-label>Practicante</mat-label>
         <mat-select name="Practicante" formControlName="Practicante_Estudiante">
-          <mat-option value=true>Si</mat-option>
-          <mat-option value=false>No</mat-option>
+          <mat-option [value]="true">Si</mat-option>
+          <mat-option [value]="false">No</mat-option>
         </mat-select>
       </mat-form-field>
 
@@ -69,13 +73,23 @@
         </mat-select>
       </mat-form-field>
       <br>
-      <mat-form-field class="example-full-width">
+      <mat-form-field appearance="fill">
+        <mat-label>Carrera</mat-label>
+        <mat-select formControlName="carrera_Estudiante" [(value)]="idCarreraSeleccionado" required>
+          <mat-option *ngFor="let c of listac" [value]="c.id">
+            {{c.nombre_Carrera}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <mat-form-field [hidden]="role=='ESTUDIANTE'" class="example-full-width">
         <mat-label>Usuario</mat-label>
         <input matInput required placeholder="Usuario" formControlName="Usuario_Estudiante">
       </mat-form-field>
       <div>
         <button mat-raised-button class="color1">Aceptar</button>
-        <button mat-raised-button class="color2" routerLink="/login">Cancelar</button>
+        <button [hidden]="role=='ESTUDIANTE'" mat-raised-button class="color2" routerLink="/login">Cancelar</button>
+        <button mat-raised-button class="color2" routerLink="/pages/estudiantes">Cancelar</button>
         <br>
       </div>
       <p>{{mensaje}}</p>

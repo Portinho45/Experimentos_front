@@ -17,18 +17,23 @@
     <form [formGroup]="form" (submit)="aceptar()">
 
       <mat-form-field class="example-full-width">
-        <mat-label>Código</mat-label>
-        <input matInput required placeholder="Código" formControlName="id">
+        <mat-label>id</mat-label>
+        <input matInput required placeholder="Código" formControlName="id" readonly="">
       </mat-form-field>
       <br>
       <mat-form-field class="example-full-width">
         <mat-label>Estudiante</mat-label>
-        <input matInput required placeholder="Estudiante" formControlName="idEstudiante_Calificacion">
+        <input matInput required placeholder="Estudiante" formControlName="id_estudiante">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <mat-label>Estudiante Calificador</mat-label>
+        <input matInput required placeholder="Estudiante Calificador" formControlName="estudiante_ponecalificacion">
       </mat-form-field>
       <br>
       <mat-form-field class="example-full-width">
         <mat-label>Calificacion:</mat-label>
-        <input matInput required placeholder="Calificacion entre 0-5" formControlName="calificacion_Calificacion">
+        <input matInput required placeholder="Calificacion entre 0-5" formControlName="calificacion">
       </mat-form-field>
       <br>
       <br>

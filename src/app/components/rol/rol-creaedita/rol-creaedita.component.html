@@ -16,17 +16,25 @@
 
       <mat-form-field class="example-full-width">
         <mat-label>Id:</mat-label>
-        <input matInput required placeholder="Id" formControlName="id">
+        <input matInput required placeholder="Id" formControlName="id" readonly>
       </mat-form-field>
       <br>
       <mat-form-field class="example-full-width">
         <mat-label>Rol:</mat-label>
-        <input matInput required placeholder="Ingrese el rol" formControlName="rol">
+        <mat-select name="Rol" formControlName="rol">
+          <mat-option value=ADMIN>administrador</mat-option>
+          <mat-option value=ESTUDIANTE>estudiante</mat-option>
+          <mat-option value=RECLUTADOR>reclutador</mat-option>
+        </mat-select>
       </mat-form-field>
       <br>
-      <mat-form-field class="example-full-width">
-        <mat-label>Usuario_id:</mat-label>
-        <input matInput required placeholder="Ingrese id usuario" formControlName="usuarioId">
+      <mat-form-field appearance="fill">
+        <mat-label>Usuario</mat-label>
+        <mat-select formControlName="usuarioId" [(value)]="idUsuarioSeleccionado" required>
+          <mat-option *ngFor="let u of listau" [value]="u.idUsuario">
+            {{u.username}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
       <br>
       <div style="text-align: center;">

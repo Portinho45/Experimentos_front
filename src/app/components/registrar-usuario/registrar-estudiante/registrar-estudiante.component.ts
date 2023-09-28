@@ -3,10 +3,13 @@ import { FormControl, FormGroup,ValidationErrors, ValidatorFn, Validators } from
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { Estudiante } from 'src/app/model/estudiante';
 import { Institucion_Educativa } from 'src/app/model/institucion';
+import { Carrera } from 'src/app/model/carrera';
 import { Usuario } from 'src/app/model/usuario';
 import { EstudianteService } from 'src/app/service/estudiante.service';
 import { InstitucionService } from 'src/app/service/institucion.service';
+import { CarreraService } from 'src/app/service/carrera.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
+import { LoginService } from 'src/app/service/login.service';
 
 @Component({
   selector: 'app-registrar-estudiante',
@@ -25,9 +28,12 @@ export class RegistrarEstudianteComponent implements OnInit{
   idUsuarioSeleccionado: number = 0;
   listai: Institucion_Educativa[] = [];
   idInstitucionSeleccionado: number = 0;
+  listac: Carrera[] = [];
+  idCarreraSeleccionado: number = 0;
+  role:string="";
 
   constructor(private estudianteService: EstudianteService, private router: Router, private route: ActivatedRoute,
-    private uS: UsuarioService, private iS: InstitucionService) {
+    private uS: UsuarioService, private iS: InstitucionService, private loginService: LoginService, private cS: CarreraService) {
 
   }
   ngOnInit(): void {
@@ -42,6 +48,7 @@ export class RegistrarEstudianteComponent implements OnInit{
 
     this.uS.list().subscribe(data => { this.listau = data });
     this.iS.List().subscribe(data => { this.listai = data });
+    this.cS.list().subscribe(data => { this.listac = data });
 
     this.form = new FormGroup({
     idEstudiante: new FormControl(),
@@ -51,8 +58,9 @@ export class RegistrarEstudianteComponent implements OnInit{
     Practicante_Estudiante: new FormControl(),
     Descripcion_Estudiante: new FormControl(),
     Institucion_Estudiante: new FormControl(''),
-    Usuario_Estudiante: new FormControl(this.username)
-
+    carrera_Estudiante: new FormControl(''),
+    Usuario_Estudiante: new FormControl(this.username),
+    Usuario: new FormControl('')
     });
     console.log(this.username)
   }
@@ -65,13 +73,17 @@ export class RegistrarEstudianteComponent implements OnInit{
     this.estudiante.practicante_Estudiante= this.form.value['Practicante_Estudiante'];
     this.estudiante.descripcion_Estudiante= this.form.value['Descripcion_Estudiante'];
     this.estudiante.institucion_Estudiante.nombre_Institucion= this.form.value['Institucion_Estudiante.nombre_Institucion'];
+    this.estudiante.carrera_Estudiante= this.form.value['carrera_Estudiante.nombre_Carrera'];
     if (1>0){
       let u = new Usuario();
       let i=new Institucion_Educativa();
+      let c=new Carrera();
       i.id=this.idInstitucionSeleccionado;
-      
+      c.id=this.idCarreraSeleccionado;
+
       console.log(this.estudiante.usuario_Estudiante.username)
       this.estudiante.institucion_Estudiante=i;
+      this.estudiante.carrera_Estudiante=c;
 
       if (this.edicion) {
         //actualice
@@ -111,10 +123,16 @@ export class RegistrarEstudianteComponent implements OnInit{
           Practicante_Estudiante: new FormControl(data.practicante_Estudiante),
           Descripcion_Estudiante: new FormControl(data.descripcion_Estudiante),
           Institucion_Estudiante: new FormControl(data.institucion_Estudiante.nombre_Institucion),
-          Usuario_Estudiante: new FormControl(data.usuario_Estudiante.username)
+          carrera_Estudiante: new FormControl(data.carrera_Estudiante.nombre_Carrera),
+          Usuario_Estudiante: new FormControl(data.usuario_Estudiante.username),
+          Usuario: new FormControl(data.usuario_Estudiante)
           })
       })
     }
   }
 
+  verificar() {
+    this.role=this.loginService.showRole();
+    return this.loginService.verificar();
+  }
 }

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ReclutadorService } from 'src/app/service/reclutador.service';
-
 import { Reclutador } from 'src/app/model/reclutador';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
@@ -9,7 +8,6 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 import { Empresa } from 'src/app/model/empresa';
 import { EmpresaService } from 'src/app/service/empresa.service';
 import { LoginService } from 'src/app/service/login.service';
-
 @Component({
   selector: 'app-reclutador-creaedita',
   templateUrl: './reclutador-creaedita.component.html',
@@ -25,7 +23,6 @@ export class ReclutadorCreaeditaComponent implements OnInit {
   listae: Empresa[] = [];
   idEmpresaSeleccionado: number = 0;
   role: string = '';
-
   constructor(
     private reclutadorService: ReclutadorService,
     private uS: UsuarioService,
@@ -41,7 +38,10 @@ export class ReclutadorCreaeditaComponent implements OnInit {
       this.id = data['id'];
       this.edicion = data['id'] != null;
       this.username = data['username'];
+      this.init();
     });
+
+    this.es.List().subscribe(data => { this.listae = data });
 
     this.form = new FormGroup({
       id: new FormControl(),
@@ -49,49 +49,39 @@ export class ReclutadorCreaeditaComponent implements OnInit {
       empresaId: new FormControl(),
       usuarioId: new FormControl(this.username),
     });
-
-
     if (this.edicion) {
       this.init();
     }
-
-    this.es.List().subscribe((data) => {
-      this.listae = data;
-    });
   }
-
   aceptar(): void {
     this.reclutador.id = this.form.value['id'];
     this.reclutador.descripcion_Reclutador = this.form.value['descripcion_Reclutador'];
     this.reclutador.empresa = this.form.value['empresaId'];
-
-    let e = new Empresa();
-    let u = new Usuario();
-    this.es.ListId(this.idEmpresaSeleccionado).subscribe((data) => {
-      this.reclutador.empresa = data;
+    let e=new Empresa();
+    let u =new Usuario();
+    this.es.ListId(this.idEmpresaSeleccionado).subscribe(data=>{
+      this.reclutador.empresa=data
     });
-
-    this.uS.listUsername(this.username).subscribe((data) => {
-      u = data;
-      this.reclutador.usuario = u;
-    });
-
     if (1 > 0) {
-
       if (this.edicion) {
         //actualice
         this.reclutadorService.Update(this.reclutador).subscribe(() => {
-          this.reclutadorService.List().subscribe((data) => {
+          this.reclutadorService.List().subscribe(data => {
             this.reclutadorService.SetList(data);
           })
         })
-        this.router.navigate(['pages/Reclutadores']);
       } else {
-          this.reclutadorService.Insert(this.reclutador).subscribe((data) => {
-            this.reclutadorService.List().subscribe((data) => {
+        this.uS.listUsername(this.username).subscribe(data=>{
+          u=data;
+          this.reclutador.usuario=u;
+          console.log(this.reclutador.usuario);
+          this.reclutadorService.Insert(this.reclutador).subscribe(data => {
+            this.reclutadorService.List().subscribe(data => {
               this.reclutadorService.SetList(data);
-            });
-          });
+              console.log(this.reclutador.usuario);
+            })
+          })
+        })
       }
       this.router.navigate(['pages/Reclutadores']);
     } else {
@@ -111,7 +101,6 @@ export class ReclutadorCreaeditaComponent implements OnInit {
       });
     }
   }
-
   verificar() {
     this.role=this.loginService.showRole();
     return this.loginService.verificar();

@@ -10,7 +10,7 @@ export class LoginService {
   constructor(private http: HttpClient) { }
 
   login(request: JwtRequest) {
-    return this.http.post("https://appconnection2connection.onrender.com/authenticate", request);
+    return this.http.post("https://expconnection2connection-backend.onrender.com/authenticate", request);
   }
 
 

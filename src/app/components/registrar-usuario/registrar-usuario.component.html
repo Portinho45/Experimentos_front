@@ -29,14 +29,17 @@
             </div>
 
             <div class="form-floating mb-3">
-                <input matInput required placeholder="Email@gmail.com" formControlName="correo" class="form-control">
-                <label>Email</label>
-                <span *ngIf="form.get('correo')?.hasError('required') && form.get('correo')?.touched" class="text-danger errorLabel">
-                    El <strong>correo</strong> es requerido
-                </span>
-                <span *ngIf="form.get('correo')?.hasError('email') && form.get('correo')?.touched" class="text-danger errorLabel">
-                    El <strong>correo</strong> es invalido
-                </span>
+              <input matInput required placeholder="Email@gmail.com" formControlName="correo" class="form-control">
+              <label>Email</label>
+              <mat-error *ngIf="form?.get('correo')?.hasError('sinArroba')">
+                El correo electrónico debe contener "@".
+              </mat-error>
+              <span *ngIf="form.get('correo')?.hasError('required') && form.get('correo')?.touched" class="text-danger errorLabel">
+                El <strong>correo</strong> es requerido
+              </span>
+              <span *ngIf="form.get('correo')?.hasError('email') && form.get('correo')?.touched" class="text-danger errorLabel">
+                El <strong>correo</strong> es invalido
+              </span>
             </div>
 
             <div class="form-floating mb-3">
@@ -61,7 +64,7 @@
 
 
             <div class="d-grid gap-2 mt-2">
-              <button type="submit" class="btn btn-primary btn-lg" (submit)="registrar()">Guardar</button>
+              <button type="submit" class="btn btn-primary btn-lg" [disabled]="form.invalid">Guardar</button>
             </div>
 
             <div class="d-grid gap-2 mt-2" *ngIf="cont>0">

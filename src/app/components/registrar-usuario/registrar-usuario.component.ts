@@ -5,6 +5,7 @@ import { UsuarioService } from 'src/app/service/usuario.service';
 import { Router} from '@angular/router'
 import { Rol } from 'src/app/model/rol';
 import { RolService } from 'src/app/service/rol.service';
+import { AbstractControl } from '@angular/forms';
 import {MatDialog, MAT_DIALOG_DATA, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 import {NgIf} from '@angular/common';
 
@@ -34,14 +35,14 @@ export class RegistrarUsuarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      id: new FormControl(),
-      dni: new FormControl(),
-      usuario: new FormControl(),
-      nombre: new FormControl(),
-      correo: new FormControl(),
-      contraseña: new FormControl(),
-      tipo: new FormControl(),
+    this.form = this.fb.group({
+      id: [''],
+      dni: ['', Validators.required],
+      usuario: ['', Validators.required],
+      nombre: ['', Validators.required],
+      correo: ['', [Validators.required, Validators.email, this.validarCorreo]],
+      contraseña: ['', Validators.required],
+      tipo: ['', Validators.required],
     });
     this.form2=new FormGroup({
       rol:new FormControl(),
@@ -49,25 +50,45 @@ export class RegistrarUsuarioComponent implements OnInit {
     })
   }
 
+  validarCorreo(control: AbstractControl): { [key: string]: boolean } | null {
+    const value = control.value;
+
+    if (value && value.indexOf('@') === -1) {
+      return { 'sinArroba': true };
+    }
+
+    return null;
+  }
+
+
   registrar(): void {
-    this.u.idUsuario= this.form.value['id'];
-    this.u.dni_Usuario= this.form.value['dni'];
-    this.u.username= this.form.value['usuario'];
-    this.u.nombre_Usuario= this.form.value['nombre'];
-    this.u.correo_Usuario= this.form.value['correo'];
-    this.u.contrasena_Usuario= this.form.value['contraseña'];
-    this.u.rol= this.form.value['tipo'];
-    if (this.form.value['dni'] && this.form.value['dni'].length > 0 &&
-    this.form.value['usuario'] && this.form.value['usuario'].length > 0 &&
-    this.form.value['nombre'] && this.form.value['nombre'].length > 0 &&
-    this.form.value['correo'] && this.form.value['correo'].length > 0 &&
-    this.form.value['contraseña'] && this.form.value['contraseña'].length > 0 &&
-    this.form.value['tipo'] && this.form.value['tipo'].length > 0 ) {
+    this.u.idUsuario = this.form.value['id'];
+    this.u.dni_Usuario = this.form.value['dni'];
+    this.u.username = this.form.value['usuario'];
+    this.u.nombre_Usuario = this.form.value['nombre'];
+    this.u.correo_Usuario = this.form.value['correo'];
+    this.u.contrasena_Usuario = this.form.value['contraseña'];
+    this.u.rol = this.form.value['tipo'];
+
+    if (
+      this.form.value['dni'] &&
+      this.form.value['dni'].length > 0 &&
+      this.form.value['usuario'] &&
+      this.form.value['usuario'].length > 0 &&
+      this.form.value['nombre'] &&
+      this.form.value['nombre'].length > 0 &&
+      this.form.value['correo'] &&
+      this.form.value['correo'].length > 0 &&
+      this.form.value['contraseña'] &&
+      this.form.value['contraseña'].length > 0 &&
+      this.form.value['tipo'] &&
+      this.form.value['tipo'].length > 0
+    ) {
       this.registrarusuario();
-      this.cont=1;
-      } else {
-         alert("Complete los campos requeridos ¬¬");
-        }
+      this.cont = 1;
+    } else {
+      alert('Complete los campos requeridos ¬¬');
+    }
   }
   registrarusuario():void{
     this.uS.insert(this.u).subscribe(data => {

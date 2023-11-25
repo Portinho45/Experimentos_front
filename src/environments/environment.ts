@@ -1,5 +1,5 @@
 export const environment={
   production:false,
-  base:"https://expconnection2connection-backend.onrender.com"
+  base:"http://localhost:8080"
   //base:"https://data-connection2connection.onrender.com"
 }
